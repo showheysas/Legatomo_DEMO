@@ -52,39 +52,60 @@ export default function Home() {
       <div className="flex pt-20">
         <aside className="w-64 bg-sky-100 p-4 border-r border-sky-200">
           <h2 className="text-lg font-bold text-slate-800 mb-2">法令選択</h2>
-          <ul className="space-y-1 mb-6">
+          <ul className="space-y-2 mb-6">
             {laws.map(item => (
-              <li key={item} className="text-slate-700 pl-4">
-                <label className="flex items-center space-x-2">
-                  <input type="radio" name="law" checked={selectedLaw === item} onChange={() => setSelectedLaw(item)} />
-                  <span>{item}</span>
+              <li key={item}>
+                <label className="flex items-center p-2 bg-white rounded-lg shadow-sm cursor-pointer hover:bg-sky-200 transition">
+                  <input
+                    type="radio"
+                    name="law"
+                    className="appearance-none w-4 h-4 border-2 border-sky-600 rounded-full checked:bg-sky-600 checked:border-sky-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500"
+                    checked={selectedLaw === item}
+                    onChange={() => setSelectedLaw(item)}
+                  />
+                  <span className="ml-3 text-slate-700">{item}</span>
                 </label>
               </li>
             ))}
           </ul>
+
           <h2 className="text-lg font-bold text-slate-800 mb-2">カテゴリ選択</h2>
-          <ul className="space-y-1 mb-6">
+          <ul className="space-y-2 mb-6">
             {categories.map(item => (
-              <li key={item} className="text-slate-700 pl-4">
-                <label className="flex items-center space-x-2">
-                  <input type="radio" name="category" checked={selectedCategory === item} onChange={() => setSelectedCategory(item)} />
-                  <span>{item}</span>
+              <li key={item}>
+                <label className="flex items-center p-2 bg-white rounded-lg shadow-sm cursor-pointer hover:bg-sky-200 transition">
+                  <input
+                    type="radio"
+                    name="category"
+                    className="appearance-none w-4 h-4 border-2 border-sky-600 rounded-full checked:bg-sky-600 checked:border-sky-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500"
+                    checked={selectedCategory === item}
+                    onChange={() => setSelectedCategory(item)}
+                  />
+                  <span className="ml-3 text-slate-700">{item}</span>
                 </label>
               </li>
             ))}
           </ul>
+
           <h2 className="text-lg font-bold text-slate-800 mb-2">法令区分</h2>
-          <ul className="space-y-1">
+          <ul className="space-y-2">
             {lawTypes.map(item => (
-              <li key={item} className="text-slate-700 pl-4">
-                <label className="flex items-center space-x-2">
-                  <input type="radio" name="type" checked={selectedType === item} onChange={() => setSelectedType(item)} />
-                  <span>{item}</span>
+              <li key={item}>
+                <label className="flex items-center p-2 bg-white rounded-lg shadow-sm cursor-pointer hover:bg-sky-200 transition">
+                  <input
+                    type="radio"
+                    name="type"
+                    className="appearance-none w-4 h-4 border-2 border-sky-600 rounded-full checked:bg-sky-600 checked:border-sky-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500"
+                    checked={selectedType === item}
+                    onChange={() => setSelectedType(item)}
+                  />
+                  <span className="ml-3 text-slate-700">{item}</span>
                 </label>
               </li>
             ))}
           </ul>
         </aside>
+
 
         <div className="flex-1 p-6 space-y-6">
           <div className="bg-white shadow-md p-6 rounded-lg relative">
