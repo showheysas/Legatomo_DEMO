@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import Navbar from '@/components/Navbar'
 import { Inter, M_PLUS_1p } from 'next/font/google'
@@ -16,12 +15,11 @@ export default function Home() {
     }
     return false
   })
-  const [username] = useState<string>(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('username') || 'ゲスト'
-    }
-    return 'ゲスト'
-  })
+  const username =
+    typeof window !== 'undefined'
+      ? localStorage.getItem('username') || 'ゲスト'
+      : 'ゲスト'
+
   const [selectedLaw, setSelectedLaw] = useState('すべて')
   const [selectedCategory, setSelectedCategory] = useState('すべて')
   const [selectedType, setSelectedType] = useState('すべて')
@@ -106,12 +104,10 @@ export default function Home() {
           </ul>
         </aside>
 
-
         <div className="flex-1 p-6 space-y-6">
+          {/* リスクチェック */}
           <div className="bg-white shadow-md p-6 rounded-lg relative">
             <h3 className="text-xl font-bold text-slate-800 mb-2">リスクチェック</h3>
-            <p className="text-slate-800 mb-2">検討している施策を入力してください。</p>
-            <p className="text-slate-600 text-sm mb-2">例：こんなキャンペーンを考えているけど法令違反のリスクはない？</p>
             <textarea rows={3} value={riskInput} onChange={e => setRiskInput(e.target.value)} onFocus={() => setIsRiskFocused(true)} onBlur={() => setTimeout(() => setIsRiskFocused(false), 100)} className="w-full border rounded-lg p-2 text-slate-800" placeholder="ここに施策を入力" />
             {isRiskFocused && riskInput.trim() === '' && (
               <div className="absolute left-4 right-4 bg-white border shadow p-3 mt-1 text-sm text-blue-700 cursor-pointer z-10 rounded-lg" onClick={() => { setRiskInput(suggestionText); setIsRiskFocused(false) }}>
@@ -124,16 +120,16 @@ export default function Home() {
             </div>
           </div>
 
+          {/* 法令チャット */}
           <div className="bg-white shadow-md p-6 rounded-lg">
             <h3 className="text-xl font-bold text-slate-800 mb-2">法令なんでもチャット</h3>
-            <p className="text-slate-800 mb-2">法令について聞きたいことを入力してください。</p>
-            <p className="text-slate-600 text-sm mb-2">例：〇〇のことは法令のどこに規定がある？</p>
             <textarea rows={3} value={chatInput} onChange={e => setChatInput(e.target.value)} className="w-full border rounded-lg p-2 text-slate-800" placeholder="ここに質問を入力" />
             <div className="mt-2 flex justify-end">
               <button disabled={!chatInput.trim()} className={`mt-2 px-4 py-2 rounded-lg text-white ${chatInput.trim() ? 'bg-sky-700 hover:bg-sky-800' : 'bg-gray-400 cursor-not-allowed'}`}>チャット</button>
             </div>
           </div>
 
+          {/* 問い合わせ履歴 */}
           <div className="bg-white shadow-md p-6 rounded-lg">
             <h3 className="text-xl font-bold text-slate-800 mb-4">問い合わせ履歴</h3>
             <table className="w-full text-left text-sm text-slate-700">
@@ -163,7 +159,6 @@ export default function Home() {
               </tbody>
             </table>
           </div>
-
         </div>
       </div>
     </div>

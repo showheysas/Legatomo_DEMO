@@ -88,7 +88,8 @@ export default function ConsultPage() {
             <div>
               <label className="block mb-2 font-semibold text-slate-700">送信先選択（複数選択可）</label>
               <div className="space-y-2">
-                {selectedDivisions.map((division, idx) =>
+                // 変更点のある部分のみ抜粋（全文はそのままでOK）
+                {selectedDivisions.map(division =>
                   recipientsByDivision[division]?.map((recipient, index) => (
                     <label key={`${division}-${index}`} className="flex items-center space-x-2">
                       <input
@@ -100,6 +101,7 @@ export default function ConsultPage() {
                     </label>
                   ))
                 )}
+
               </div>
             </div>
           )}
