@@ -1,7 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import { Inter, M_PLUS_1p } from 'next/font/google'
 
@@ -12,19 +11,15 @@ export default function Navbar({
   isLoggedIn,
   setIsLoggedIn,
   username,
-  setUsername
 }: {
   isLoggedIn: boolean
   setIsLoggedIn: (v: boolean) => void
   username: string
-  setUsername: (v: string) => void
 }) {
-  const router = useRouter()
   const [drawerOpen, setDrawerOpen] = useState(false)
 
   const handleLogin = () => {
     setIsLoggedIn(true)
-    setUsername('佐々木')
     if (typeof window !== 'undefined') {
       localStorage.setItem('isLoggedIn', 'true')
       localStorage.setItem('username', '佐々木')
@@ -34,7 +29,6 @@ export default function Navbar({
 
   const handleLogout = () => {
     setIsLoggedIn(false)
-    setUsername('ゲスト')
     if (typeof window !== 'undefined') {
       localStorage.removeItem('isLoggedIn')
       localStorage.removeItem('username')
@@ -58,7 +52,9 @@ export default function Navbar({
         <div className="hidden sm:flex items-center space-x-4 min-w-0">
           {isLoggedIn ? (
             <>
-              <span className="text-slate-700 break-words text-sm sm:text-base leading-tight max-h-[4.5em] overflow-hidden text-ellipsis line-clamp-3">ようこそ、{username}さん</span>
+              <span className="text-slate-700 break-words text-sm sm:text-base leading-tight max-h-[4.5em] overflow-hidden text-ellipsis line-clamp-3">
+                ようこそ、{username}さん
+              </span>
               <button
                 onClick={() => alert('設定画面を開きます')}
                 className="px-2 py-1 bg-slate-700 text-white rounded-lg hover:bg-slate-800 text-sm leading-tight whitespace-nowrap"

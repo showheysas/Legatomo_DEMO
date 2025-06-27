@@ -16,7 +16,7 @@ export default function Home() {
     }
     return false
   })
-  const [username, setUsername] = useState<string>(() => {
+  const [username] = useState<string>(() => {
     if (typeof window !== 'undefined') {
       return localStorage.getItem('username') || 'ゲスト'
     }
@@ -47,7 +47,7 @@ export default function Home() {
 
   return (
     <div className={`${inter.className} ${mplus.className} min-h-screen bg-sky-50`}>
-      <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} username={username} setUsername={setUsername}  />
+      <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} username={username} />
 
       <div className="flex pt-20">
         <aside className="w-64 bg-sky-100 p-4 border-r border-sky-200">

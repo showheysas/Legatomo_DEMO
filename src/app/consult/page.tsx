@@ -7,7 +7,7 @@ import Navbar from '@/components/Navbar'
 export default function ConsultPage() {
   const router = useRouter()
   const [isLoggedIn, setIsLoggedIn] = useState(true)
-  const [username, setUsername] = useState('佐々木')
+  const [username] = useState('佐々木')
 
   const [selectedDivisions, setSelectedDivisions] = useState<string[]>([])
   const [selectedRecipients, setSelectedRecipients] = useState<string[]>([])
@@ -52,7 +52,7 @@ export default function ConsultPage() {
 
   return (
     <div className="min-h-screen bg-sky-50">
-      <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} username={username} setUsername={() => {}} />
+      <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} username={username} />
 
       <div className="pt-24 px-6 space-y-6">
         <h1 className="text-2xl font-bold text-slate-800 mb-4">法令スペシャリストに相談</h1>
