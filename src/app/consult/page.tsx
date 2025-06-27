@@ -7,7 +7,7 @@ import Navbar from '@/components/Navbar'
 export default function ConsultPage() {
   const router = useRouter()
   const [isLoggedIn, setIsLoggedIn] = useState(true)
-  const [username] = useState('佐々木')
+  const username = '佐々木'
 
   const [selectedDivisions, setSelectedDivisions] = useState<string[]>([])
   const [selectedRecipients, setSelectedRecipients] = useState<string[]>([])
@@ -88,7 +88,6 @@ export default function ConsultPage() {
             <div>
               <label className="block mb-2 font-semibold text-slate-700">送信先選択（複数選択可）</label>
               <div className="space-y-2">
-                // 変更点のある部分のみ抜粋（全文はそのままでOK）
                 {selectedDivisions.map(division =>
                   recipientsByDivision[division]?.map((recipient, index) => (
                     <label key={`${division}-${index}`} className="flex items-center space-x-2">
