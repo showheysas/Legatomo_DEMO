@@ -50,7 +50,7 @@ export default function CheckPage() {
 
   return (
     <div className={`${inter.className} ${mplus.className} min-h-screen bg-sky-50 pt-20`}>
-      <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} username={username} setUsername={setUsername}  />
+      <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} username={username} />
       <div className="p-8 space-y-6">
         <h1 className="text-2xl font-bold text-slate-800 mb-4">リスクチェック結果</h1>
 
